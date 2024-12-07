@@ -14,21 +14,49 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  name String
-  email String
-  password String
-  roles Json
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int          @id @default(autoincrement())
+  name        String
+  email       String
+  password    String
+  roles       Json
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  PartnerUser PartnerUser?
 
   @@unique([email])
 }
 
-model Course {
-  id Int @id @default(autoincrement())
-  name String
-  active Boolean
+model Partner {
+  id          Int           @id @default(autoincrement())
+  name        String
+  active      Boolean
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  PartnerUser PartnerUser[]
+  Course      Course[]
+}
+
+model PartnerUser {
+  id        Int      @id @default(autoincrement())
+  partnerId Int
+  userId    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  Partner Partner @relation(fields: [partnerId], references: [id])
+  User    User    @relation(fields: [userId], references: [id])
+
+  @@unique([userId])
+}
+
+model Course {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @db.Text
+  active      Boolean
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  partnerId   Int
+
+  Partner Partner @relation(fields: [partnerId], references: [id])
 }
