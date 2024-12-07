@@ -3,7 +3,7 @@ import * as bcrypt from 'bcrypt';
 
 import { PrismaService } from 'src/prisma/prisma.service';
 
-import { UserDto } from './dto/user.dto';
+import { UserDto } from './user.dto';
 import { UserRoles } from './user-roles';
 
 @Injectable()
@@ -40,11 +40,17 @@ export class UsersService {
     });
   }
 
-  getAll() {
-    return this.prismaService.user.findMany();
-  }
-
   generateHash(password: string) {
     return bcrypt.hashSync(password, 10);
+  }
+
+  findOne(idOrEmail: number | string) {
+    return this.prismaService.user.findFirst({
+      where: {
+        ...(typeof idOrEmail === 'number'
+          ? { id: idOrEmail }
+          : { email: idOrEmail }),
+      },
+    });
   }
 }

@@ -24,3 +24,11 @@ model User {
 
   @@unique([email])
 }
+
+model Course {
+  id Int @id @default(autoincrement())
+  name String
+  active Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

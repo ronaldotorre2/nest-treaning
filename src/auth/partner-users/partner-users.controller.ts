@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 
 import { UsersService } from '../users/users.service';
-import { UserDto } from '../users/dto/user.dto';
+import { UserDto } from '../users/user.dto';
 import { UserView } from '../users/user.view';
 
 @Controller('partner-users')
