@@ -30,3 +30,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6I
     "name": "Partner 1",
     "active": true
 }
+
+###
+GET http://localhost:3000/partners
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InVzZXIzIiwiZW1haWwiOiJ1c2VyM0BlbWFpbC5jb20iLCJyb2xlcyI6WyJVc2VyIl0sImNyZWF0ZWRBdCI6IjIwMjQtMTItMDdUMTQ6NTI6MDcuNzg4WiIsInVwZGF0ZWRBdCI6IjIwMjQtMTItMDdUMTQ6NTI6MDcuNzg4WiIsImlhdCI6MTczMzU5NDIwNCwiZXhwIjoxNzMzNjA0MjA0fQ.9XMlWo9LMtpgnL4puAlOyqriu_dI9dAlnALzCABWP2w
